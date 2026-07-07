@@ -15,8 +15,10 @@ public class ScoreReport {
         System.out.print("請輸入 Math 成績：");
         int scoreMath = sc.nextInt();
 
+        //成績平均公式
         double average = (scoreJava + scoreEnglish + scoreMath) / 3.0;
 
+        //輸出
         System.out.println("=== 成績報表 ===");
         System.out.println("姓名:" + name);
         System.out.println("Java:" + scoreJava);
