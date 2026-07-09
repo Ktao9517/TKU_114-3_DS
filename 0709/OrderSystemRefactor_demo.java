@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class OrderSystemRefactor {
+public class OrderSystemRefactor_demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
