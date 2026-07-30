@@ -1,90 +1,43 @@
 import java.util.ArrayList;
 
 public class OrderAlgorithms {
-    public static void mergeSortById(Order[] orders) {
+
+    public static void mergeSortByAmountDesc(Order[] orders) {
+        if (orders == null || orders.length <= 1) return;
         Order[] temp = new Order[orders.length];
-        mergeSortById(orders, temp, 0, orders.length - 1);
+        mergeSort(orders, temp, 0, orders.length - 1);
     }
 
-    private static void mergeSortById(
-        Order[] orders,
-        Order[] temp,
-        int left,
-        int right
-    ) {
-        if (left >= right) {
-            return;
-        }
+    private static void mergeSort(Order[] arr, Order[] temp, int left, int right) {
+        if (left >= right) return;
         int mid = left + (right - left) / 2;
-        mergeSortById(orders, temp, left, mid);
-        mergeSortById(orders, temp, mid + 1, right);
-        merge(orders, temp, left, mid, right);
+        mergeSort(arr, temp, left, mid);
+        mergeSort(arr, temp, mid + 1, right);
+        merge(arr, temp, left, mid, right);
     }
 
-    private static void merge(
-        Order[] orders,
-        Order[] temp,
-        int left,
-        int mid,
-        int right
-    ) {
-        int i = left;
-        int j = mid + 1;
-        int k = left;
-
+    private static void merge(Order[] arr, Order[] temp, int left, int mid, int right) {
+        for (int i = left; i <= right; i++) temp[i] = arr[i];
+        int i = left, j = mid + 1, k = left;
         while (i <= mid && j <= right) {
-            if (orders[i].getId().compareTo(
-                    orders[j].getId()) <= 0) {
-                temp[k++] = orders[i++];
+            if (temp[i].getAmount() >= temp[j].getAmount()) {
+                arr[k++] = temp[i++];
             } else {
-                temp[k++] = orders[j++];
+                arr[k++] = temp[j++];
             }
         }
-        while (i <= mid) {
-            temp[k++] = orders[i++];
-        }
-        while (j <= right) {
-            temp[k++] = orders[j++];
-        }
-        for (int index = left; index <= right; index++) {
-            orders[index] = temp[index];
-        }
+        while (i <= mid) arr[k++] = temp[i++];
+        while (j <= right) arr[k++] = temp[j++];
     }
 
-    public static int binarySearchById(
-        Order[] orders,
-        String targetId
-    ) {
-        int low = 0;
-        int high = orders.length - 1;
-
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            int comparison = targetId.compareTo(
-                orders[mid].getId()
-            );
-
-            if (comparison == 0) {
-                return mid;
-            } else if (comparison < 0) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+    public static ArrayList<Order> findByCustomer(Order[] orders, String name) {
+        ArrayList<Order> result = new ArrayList<>();
+        if (name == null) return result;
+        for (Order o : orders) {
+            if (o.getCustomer().equalsIgnoreCase(name)) {
+                result.add(o);
             }
         }
-        return -1;
-    }
-
-    public static ArrayList<Order> findByCustomer(
-        ArrayList<Order> orders,
-        String customer
-    ) {
-        ArrayList<Order> results = new ArrayList<>();
-        for (Order order : orders) {
-            if (order.getCustomer().equalsIgnoreCase(customer)) {
-                results.add(order);
-            }
-        }
-        return results;
+        return result;
     }
 }
