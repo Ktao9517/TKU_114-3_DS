@@ -4,23 +4,22 @@ import java.util.Deque;
 import java.util.Scanner;
 
 public class EventRegistrationSystem {
-    private ArrayList<Registration> allRegistrations = new ArrayList<>(); // 主資料
-    private Deque<Registration> waitlist = new ArrayDeque<>();            // 候補 Queue
-    private Deque<Registration> cancelHistory = new ArrayDeque<>();       // 最近取消 Stack（支援復原）
-    private int capacity;                                                 // 正式名額上限
-    private int formalCount = 0;                                          // 目前正式人數
+    private ArrayList<Registration> allRegistrations = new ArrayList<>(); 
+    private Deque<Registration> waitlist = new ArrayDeque<>();            
+    private Deque<Registration> cancelHistory = new ArrayDeque<>();       
+    private int capacity;                                                 
+    private int formalCount = 0;                                          
 
     public EventRegistrationSystem(int capacity) {
         this.capacity = Math.max(capacity, 1);
     }
 
-    /** 新增報名（正式或候補） */
     public boolean register(String id, String name, String phone) {
         if (id == null || id.trim().isEmpty() || name == null || name.trim().isEmpty()) {
             System.out.println("編號或姓名不可空白");
             return false;
         }
-        // 檢查重複編號
+       
         for (Registration r : allRegistrations) {
             if (r.getId().equalsIgnoreCase(id.trim()) && !r.isCancelled()) {
                 System.out.println("重複報名編號，無法新增: " + id);
@@ -42,7 +41,6 @@ public class EventRegistrationSystem {
         return true;
     }
 
-    /** 取消報名 */
     public boolean cancel(String id) {
         Registration target = null;
         for (Registration r : allRegistrations) {
@@ -57,7 +55,7 @@ public class EventRegistrationSystem {
         }
 
         target.setCancelled(true);
-        cancelHistory.push(target); // 記錄以便復原
+        cancelHistory.push(target); 
 
         if (target.isWaitlist()) {
             waitlist.remove(target);
@@ -65,7 +63,7 @@ public class EventRegistrationSystem {
         } else {
             formalCount--;
             System.out.println("已取消正式報名: " + target);
-            // 從候補遞補
+            
             if (!waitlist.isEmpty()) {
                 Registration next = waitlist.poll();
                 next.setWaitlist(false);
@@ -76,7 +74,6 @@ public class EventRegistrationSystem {
         return true;
     }
 
-    /** 復原最近一次取消 */
     public boolean undoCancel() {
         if (cancelHistory.isEmpty()) {
             System.out.println("沒有可復原的取消紀錄");
@@ -126,7 +123,6 @@ public class EventRegistrationSystem {
 
         System.out.println("===== 活動報名與候補系統 =====");
 
-        // 測試案例
         system.register("R001", "王小明", "0911111111");
         system.register("R002", "陳小美", "0922222222");
         system.register("R003", "林大同", "0933333333");
@@ -154,7 +150,6 @@ public class EventRegistrationSystem {
         system.undoCancel();
         system.showStatus();
 
-        // 搜尋與排序
         system.showSortedById();
 
         Registration[] arr = system.allRegistrations.toArray(new Registration[0]);

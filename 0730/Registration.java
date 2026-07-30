@@ -1,8 +1,8 @@
 public class Registration {
-    private String id;          // 報名編號
-    private String name;        // 姓名
+    private String id;         
+    private String name;        
     private String phone;
-    private boolean isWaitlist; // 是否為候補
+    private boolean isWaitlist; 
     private boolean cancelled;
 
     public Registration(String id, String name, String phone) {

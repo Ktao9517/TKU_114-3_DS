@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class RegistrationAlgorithms {
 
-    /** 依報名編號升冪 Merge Sort（穩定） */
     public static void mergeSortById(Registration[] regs) {
         if (regs == null || regs.length <= 1) return;
         Registration[] temp = new Registration[regs.length];
@@ -33,7 +32,6 @@ public class RegistrationAlgorithms {
         while (j <= right) arr[k++] = temp[j++];
     }
 
-    /** Binary Search 依編號查詢（必須先排序） */
     public static Registration binarySearchById(Registration[] sorted, String id) {
         if (sorted == null || id == null || id.trim().isEmpty()) return null;
         int low = 0;
@@ -53,7 +51,6 @@ public class RegistrationAlgorithms {
         return null;
     }
 
-    /** Sequential Search 依姓名找出全部符合者 */
     public static ArrayList<Registration> sequentialSearchByName(Registration[] regs, String name) {
         ArrayList<Registration> result = new ArrayList<>();
         if (regs == null || name == null) return result;
