@@ -31,7 +31,6 @@ public class TransactionSortingSystem {
         }
     }
 
-    // 金額大在前；金額同則時間序小在前
     private static int compare(Transaction a, Transaction b) {
         if (a.getAmount() != b.getAmount()) {
             return b.getAmount() - a.getAmount();
