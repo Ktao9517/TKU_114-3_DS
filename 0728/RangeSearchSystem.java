@@ -1,6 +1,6 @@
 public class RangeSearchSystem {
     public static void main(String[] args) {
-        // 包含重複資料的已排序陣列
+        
         int[] data = {5, 10, 10, 10, 18, 25, 25, 25, 25, 40, 50};
 
         System.out.println("===== 第一筆與最後一筆位置 =====");
@@ -10,9 +10,9 @@ public class RangeSearchSystem {
 
         printRange(data, 10);
         printRange(data, 25);
-        printRange(data, 5);   // 第一筆
-        printRange(data, 50);  // 最後一筆
-        printRange(data, 99);  // 不存在
+        printRange(data, 5);   
+        printRange(data, 50);  
+        printRange(data, 99);  
     }
 
     public static void printRange(int[] data, int target) {

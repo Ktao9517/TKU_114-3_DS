@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ProductIdSearchPractice {
     public static void main(String[] args) {
-        // 至少 8 筆未排序商品編號
+        
         String[] productIds = {
             "P205", "P101", "P330", "P150", "P088", "P412", "P003", "P277", "P199"
         };
@@ -36,7 +36,7 @@ public class ProductIdSearchPractice {
         }
         System.out.println("實際比較次數: " + comparisons);
 
-        // 額外測試提示
+        
         System.out.println("\n建議測試：第一筆 P205、最後一筆 P199、不存在 P999");
         sc.close();
     }

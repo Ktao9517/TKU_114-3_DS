@@ -8,7 +8,7 @@ public class RecursiveDigitCounter {
         if (number < 0) {
             number = -number;
         }
-        // base case
+        
         if (number < 10) {
             return (number == target) ? 1 : 0;
         }
@@ -20,7 +20,7 @@ public class RecursiveDigitCounter {
     public static void main(String[] args) {
         System.out.println("===== 遞迴統計數字出現次數 =====");
 
-        // 至少 6 組測試
+        
         System.out.println("countDigit(122333, 3) = " + countDigit(122333, 3)); // 3
         System.out.println("countDigit(10001, 0) = " + countDigit(10001, 0));   // 3
         System.out.println("countDigit(7, 7) = " + countDigit(7, 7));           // 1

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class EmployeeSearchSystem {
     public static void main(String[] args) {
-        // 依編號排序的員工陣列
+        
         Employee[] employees = {
             new Employee("E001", "王小明", "資訊部", "101"),
             new Employee("E015", "陳小美", "人資部", "205"),
@@ -30,7 +30,7 @@ public class EmployeeSearchSystem {
             System.out.println("找不到編號「" + targetId + "」的員工。");
         }
 
-        // 空陣列測試
+        
         System.out.println("\n空陣列測試: " + binarySearchById(new Employee[0], "E001"));
         sc.close();
     }

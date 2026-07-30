@@ -6,23 +6,23 @@ public class SearchEfficiencyReport {
         for (int size : sizes) {
             int[] data = new int[size];
             for (int i = 0; i < size; i++) {
-                data[i] = (i + 1) * 10; // 已排序
+                data[i] = (i + 1) * 10; 
             }
 
             System.out.println("資料量: " + size);
-            // 第一筆
+            
             int first = data[0];
             System.out.println("  搜尋第一筆 " + first +
                 " → Sequential: " + sequentialChecks(data, first) +
                 " 次, Binary: " + binaryChecks(data, first) + " 次");
 
-            // 最後一筆
+            
             int last = data[size - 1];
             System.out.println("  搜尋最後一筆 " + last +
                 " → Sequential: " + sequentialChecks(data, last) +
                 " 次, Binary: " + binaryChecks(data, last) + " 次");
 
-            // 不存在
+            
             int missing = last + 999;
             System.out.println("  搜尋不存在 " + missing +
                 " → Sequential: " + sequentialChecks(data, missing) +

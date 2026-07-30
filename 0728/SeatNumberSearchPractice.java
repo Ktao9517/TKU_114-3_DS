@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class SeatNumberSearchPractice {
     public static void main(String[] args) {
-        // 至少 12 筆已排序座位編號
+        
         int[] seats = {101, 105, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160};
 
         System.out.println("===== 座位編號二分搜尋 =====");
